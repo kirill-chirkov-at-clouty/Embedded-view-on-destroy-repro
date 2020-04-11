@@ -17,5 +17,5 @@ export class AppComponent implements OnDestroy {
     public ngOnDestroy(): void {
         this.vcr.createEmbeddedView(this.container);
     }
-  
+
 }
