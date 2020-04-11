@@ -1,10 +1,21 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AppComponent {
-  title = 'repro';
+export class AppComponent implements OnDestroy {
+
+    @ViewChild('content') private container: TemplateRef<any>;
+
+    constructor(
+      private vcr: ViewContainerRef,
+    ) {
+    }
+
+    public ngOnDestroy(): void {
+        this.vcr.createEmbeddedView(this.container);
+    }
+  
 }
