@@ -9,10 +9,8 @@ import { DullService } from '../dull.service';
 export class InnerComponent {
 
     constructor(
-      private dull: DullService,
+      private dull: DullService, // Necessary for crash to happen
     ) {
-        console.log('render');
-        console.log(this.dull);
     }
 
 }
